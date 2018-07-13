@@ -12,13 +12,103 @@
     	}
     	body{
     		background:url("images/1.jpg");
-            background-size:100% 100%;
-            //height:1000px;
+    		background-size:100% 100%;
+    		background-repeat:no-repeat;
+			height:1000px;
+			background-attachment:fixed;
+			
     	}
+
+    	
+    	.nav{
+    		width:95%;
+    		height:25px;
+    		margin:10px auto;
+    		background:#f0f;
+    		border-radius:5px;
+    		
+    	}
+    	.container{
+    		width:95%;
+    		margin:10px auto;
+    		background:#0ff;
+    		border-radius:5px;
+    	}
+    	.foot{
+    		width:95%;
+    		height:25px;
+    		margin:10px auto;
+    		background:#ccc;
+    		border-radius:5px;
+    	}
+    	.nav span{
+    		font-weight:bold;
+    		font-size:15px;
+    		line-height:25px;
+    		margin:0 15px;
+    	}
+    	.nav-menu{
+    		float:right;
+    	}
+    	.well{
+    		height:10px;
+    		background:red;
+    		border-radius:5px;
+    		margin:10px 0;
+    	}
+		header{
+			height:100px;
+		}
+		.content{
+			height:100px;
+		}
+
+		footer{
+			height:100px;
+		}
     </style>
 </head>
 <body>
 <audio src="audio/Moon.mp3" autoplay="autoplay"></audio>
+<!-- 导航条 -->
+<div class="nav">
+		<span>Xxuan</span>
+		<span>Personal information</span>
+		<span>Journal</span>
+		<span>Interest</span>
+		<span class="nav-menu">Menu</span>
+</div>
+<!-- 主题内容 -->
+<div class="container">
+	<!-- 头部 -->
+	<header>
+		<!-- 轮播图 -->
+		<div class="carousel">
+			
+		</div>
+		<!-- 指示灯 -->
+		<!-- 控制器 -->
+	</header>
+	<!-- 分割线 -->
+	<div class="well"></div>
+	<!-- 内容区域 -->
+	<div class="content">
+		<div class="columns">
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+			<div class="column"></div>
+		</div>
+	</div>
+	<!-- 分割线 -->
+	<div class="well"></div>
 
+	<!-- 内容底部 -->
+	<footer>
+		<div class="cruise"></div>
+	</footer>
+</div>
+<!-- 底部 -->
+<div class="foot"></div>
 </body>
 </html>
