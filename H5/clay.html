@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Rain特效</title>
+    <style type="text/css">
+    	body{
+    		margin:0px;
+    	}
+    	.rain{
+    		display:block;
+    	}
+    </style>
+</head>
+<body>
+<canvas class="rain">
+	
+</canvas>
+</body>
+<script type="text/javascript">
+	var oCanvas=document.querySelector(".rain");
+	var w,h;
+	var aRain=[];
+	~~function setSize(){
+		window.onresize=arguments.callee;
+		w=window.innerWidth;
+		h=window.innerHeight;
+		oCanvas.width=w;
+		oCanvas.height=h;
+	}();
+	var canCon=oCanvas.getContext("2d");
+	function random(min,max){
+		return Math.random()*(max-min)+min;
+	}
+	function Rain(){};
+	Rain.prototype={
+		init:function(){
+			this.x=random(0,w);
+			this.y=0;
+			this.w=2;
+			this.h=10;
+			this.color="#3ff";
+			this.vy=random(2,3);
+			this.height=random(0.8*h,0.9*h);
+			this.maxR=random(80,135);
+			this.r=2;
+		},
+		draw:function(){
+			if(this.y<this.height){
+				canCon.fillStyle=this.color;
+				canCon.fillRect(this.x,this.y,this.w,this.h);
+		}else{
+			canCon.beginPath();
+			canCon.strokeStyle=this.color;
+			canCon.arc(this.x,this.y,this.r,0,Math.PI*2);
+			canCon.stroke();
+		}
+			
+		},
+		move:function(){
+			if(this.y<this.height){
+				this.y+=this.vy;
+			}else{
+				if(this.r<this.maxR){
+				this.r++;					
+				}else{
+				this.init();					
+				}
+			}
+				this.draw();
+			}
+		}
+	
+	
 
+	function createRain(num,time){
+		for(var i=0;i<num;i++){
+			setTimeout(function(){
+				var rain=new Rain();
+				rain.init();
+				rain.draw();
+				aRain.push(rain);
+			},time*i);
+		}
+	}
+	createRain(30,200);
+	setInterval(function(){
+		canCon.fillStyle="rgba(0,0,0,0.09)";
+		canCon.fillRect(0,0,w,h);
+		for(var item of aRain){
+			item.move();
+		}
+	},1000/60)
+</script>
+
+</html>
